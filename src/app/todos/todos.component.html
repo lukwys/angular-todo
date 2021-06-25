@@ -1,0 +1,11 @@
+<input [(ngModel)]="newToDoTitle" (keyup.enter)="createToDo()">
+<p *ngIf="!isNameValid" class="invalid-todo">Invalid text !!!</p>
+<ul class="todo-list">
+
+  <li *ngFor="let todo of todos">
+    <input type="checkbox" class="done-checkbox" (click)=doneToDo(todo)>
+    <span [ngClass]="{'done-todo' : todo.isDone}">{{todo.title}}</span>
+    <button (click)=deleteToDo(todo)>X</button>
+  </li>
+</ul>
+<button (click)=sortTodos()>Sort</button>

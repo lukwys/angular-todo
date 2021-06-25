@@ -1,0 +1,13 @@
+.todo-list{
+    list-style-type: none;
+}
+
+.done-todo{
+    text-decoration: line-through;
+}
+
+.invalid-todo{
+    color: #df0707;
+    font-size: 11px;
+    margin-top: 5px;
+}
