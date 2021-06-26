@@ -4,7 +4,9 @@
 
   <li *ngFor="let todo of todos">
     <input type="checkbox" class="done-checkbox" (click)=doneToDo(todo)>
-    <span [ngClass]="{'done-todo' : todo.isDone}">{{todo.title}}</span>
+    <a routerLink="/todo/{{todo.id}}">
+      <span [ngClass]="{'done-todo' : todo.isDone}">{{todo.title}}</span>
+    </a>
     <button (click)=deleteToDo(todo)>X</button>
   </li>
 </ul>
