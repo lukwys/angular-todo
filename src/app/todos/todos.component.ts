@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
 import { v4 as uuidv4 } from 'uuid';
+import { TodosService } from '../todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -8,18 +9,17 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  todos: Todo[] = [
-    { id: uuidv4(), title: 'learn angular', isDone: false },
-    { id: uuidv4(), title: 'learn react', isDone: false },
-    { id: uuidv4(), title: 'learn vue', isDone: false }
-  ];
+  todos: Todo[] = [];
   removedTodos: Todo[] = [];
   newToDoTitle: string = "";
   isNameValid: boolean = true;
 
-  constructor() { }
+  constructor(private todoService: TodosService) { }
 
   ngOnInit(): void {
+    this.todoService.getTodos().subscribe((data) => {
+      this.todos = data;
+    })
   }
 
   createToDo() {
